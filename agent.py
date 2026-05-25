@@ -1,14 +1,13 @@
 import os
 import anthropic
-from dotenv import load_dotenv
+from config.env_loader import get_api_key
 from tools.read_file import read_file
 from tools.calculate_stats import calculate_statistics
 from tools.search_keywords import search_keywords
 from tools.summarise_text import summarise_text
 
-load_dotenv()
-
-client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+# Load the API key using the config module
+client = anthropic.Anthropic(api_key=get_api_key())
 
 tools = [
     {
